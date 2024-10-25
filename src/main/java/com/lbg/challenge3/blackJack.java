@@ -25,6 +25,8 @@ public class blackJack {
         pair.add(rand_int1);
         pair.add(rand_int2);
 
+        System.out.println(pair.toString());
+
         if (pair.get(0) > pair.get(1)) {
             System.out.println(pair.get(0));
         }
