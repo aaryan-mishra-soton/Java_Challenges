@@ -12,25 +12,31 @@ public class Taxes {
     public static int userSalaryInput() {
         /* Retrieves the user inputted salary */
         System.out.println("Enter your salary below:");
-        Scanner userSalaryScanner = new Scanner(System.in);
-        int userSalary = userSalaryScanner.nextInt();
+        try (Scanner userSalaryScanner = new Scanner(System.in)) {
+            int userSalary = userSalaryScanner.nextInt();
 
-        return userSalary;
+            return userSalary;
+        }
     }
 
 
     public static double calculateNetIncome(double userSalary){
         /* Compares the gross income to the income tax brackets */
         double netSalary = userSalary;
+        double excess = 0;
 
         if (userSalary >= 15000 && userSalary <= 19999){
-            netSalary *= .9;
+            excess = (userSalary - 15000) * .9;
+            netSalary = excess + 0;
         } else if (userSalary >= 20000 && userSalary <= 29999){
-            netSalary *= .85;
+            excess = (userSalary - 20000) * .85;
+            netSalary = excess + 17999.1;
         } else if (userSalary >= 30000 && userSalary <= 44999){
-            netSalary *= .8;
+            excess = (userSalary - 30000) * .8;
+            netSalary = excess + 26498.25;
         } else if (userSalary >= 45000){
-            netSalary *= .75;
+            excess = (userSalary - 45000) * .75;
+            netSalary = excess + 38497.45;
         }
 
         return netSalary;
